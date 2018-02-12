@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/USER_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/name"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:background="#e1e1e1"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#e1e1e1">
+
+        <TextView
+            android:id="@+id/USER_surname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/surname"
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:text="@string/Time"
+            android:id="@+id/TIME"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/POST"
+        android:text="@string/Addition_hint"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:background="#e1e1e1"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/GdzieAdd"
+        android:gravity="center"
+        android:background="#e1e1e1"
+        android:text="@string/Where_hint"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/KiedyAdd"
+        android:gravity="center"
+        android:background="#e1e1e1"
+        android:text="@string/When_hint"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/KtóraAdd"
+        android:gravity="center"
+        android:background="#e1e1e1"
+        android:text="@string/Which_hint"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ProwiantAdd"
+        android:gravity="center"
+        android:background="#e1e1e1"
+        android:text="@string/Alko_hint"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/PotemAdd"
+        android:gravity="center"
+        android:background="#e1e1e1"
+        android:text="@string/Club_hint"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:paddingBottom="16dp"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:id="@+id/LIKE_Linear"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/LIKE"
+                android:src="@drawable/ic_thumb_up_black_24dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="0"
+                android:textSize="16sp"
+                android:id="@+id/LIKE_counter"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/COMMENT_Linear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_mode_comment_black_24dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/COMMENT_counter"
+                android:layout_marginStart="8dp"
+                android:text="0"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

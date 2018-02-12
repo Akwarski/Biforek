@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "911217611716",
+    "firebase_url": "https://biforek-5695f.firebaseio.com",
+    "project_id": "biforek-5695f",
+    "storage_bucket": "biforek-5695f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:911217611716:android:10796f92a14176d8",
+        "android_client_info": {
+          "package_name": "com.example.jacek.biforek"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "911217611716-g6s6k8pjeo2iujcfttsto9hv3gsgdlac.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jacek.biforek",
+            "certificate_hash": "64ec21b6f029ffd71637b87b7dc12ceffc5d3c6c"
+          }
+        },
+        {
+          "client_id": "911217611716-si41p2aj4q8f78o51e9p2soa2hg80np9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrurNkCftx1GMtQoj8BB-a1UjipgbjUaQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "911217611716-si41p2aj4q8f78o51e9p2soa2hg80np9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

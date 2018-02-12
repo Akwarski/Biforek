@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Biforek</string>
+    <string name="name_edit">name</string>
+    <string name="name">Name:</string>
+    <string name="surname">Surname:</string>
+    <string name="surname_edit">surname</string>
+    <string name="number">Student no.:</string>
+    <string name="number_edit">number</string>
+    <string name="password">Password:</string>
+    <string name="password_edit">password</string>
+    <string name="register_button">Register</string>
+    <string name="login_button">Login</string>
+    <string name="register_now_button">Register Now</string>
+    <string name="e_mail_edit">e-mail</string>
+    <string name="e_mail">e-mail:</string>
+    <string name="add_event">Add event</string>
+    <string name="Button_add_event">Add Event</string>
+    <string name="Button_show_events">Show Events</string>
+    <string name="Where">Gdzie:</string>
+    <string name="Where_hint">Gdzie</string>
+    <string name="When">Kiedy:</string>
+    <string name="When_hint">Kiedy</string>
+    <string name="Which">O której:</string>
+    <string name="Which_hint">O której</string>
+    <string name="Alko">Prowiant:</string>
+    <string name="Alko_hint">Prowiant</string>
+    <string name="Club">Gdzie potem:</string>
+    <string name="Club_hint">Gdzie potem</string>
+    <string name="Button_share">Share</string>
+    <string name="loading">LOADING</string>
+    <string name="Addition_hint">Dodtatkowe informacje</string>
+    <string name="Addition">Dodatkowe informacje:</string>
+    <string name="Time">10h30</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="web_client_id">WEB_CLIENT_ID</string>
+
+</resources>
