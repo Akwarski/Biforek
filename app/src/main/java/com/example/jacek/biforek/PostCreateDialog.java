@@ -43,6 +43,12 @@ public class PostCreateDialog extends DialogFragment implements View.OnClickList
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         mPost = new Post();
         mProgressDialog = new ProgressDialog(getContext());
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Odbiór w Ubuntu problem z 2 plikami: Biforek.iml oraz app.iml pierwszy miał znajdować się w folderze /home/jacek/AndroidStudioProjects/Biforek_Ubuntu/Biforek_bitbucket/ a drugi w /home/jacek/AndroidStudioProjects/Biforek_Ubuntu/Biforek_bitbucket/app/
+        //Choć drugi (app.iml) znajduje się w tym folderze w którym powinien natomiast w tym pierwszym folderze znajduje się Biforek_bitbucket.iml i może to ten tylko nazwa inna
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //Trzeba tutaj zrobić porządek powiązanie z create_post_dialog, potem w BlankFragment
         //film D:\Pobrane
         //https://github.com/brad007/PostAndCommentTutorial/tree/master/app/src/main/res/layout
