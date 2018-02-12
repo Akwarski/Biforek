@@ -44,6 +44,10 @@ public class PostCreateDialog extends DialogFragment implements View.OnClickList
         mPost = new Post();
         mProgressDialog = new ProgressDialog(getContext());
 //Trzeba tutaj zrobić porządek powiązanie z create_post_dialog, potem w BlankFragment
+        //film D:\Pobrane
+        //https://github.com/brad007/PostAndCommentTutorial/tree/master/app/src/main/res/layout
+        //https://github.com/brad007/PostAndCommentTutorial/tree/master/app/src/main/java/com/fire/fire/postandcommenttutorial
+        //https://www.youtube.com/watch?v=AyJVK1Qay2E
         mRootView = getActivity().getLayoutInflater().inflate(R.layout.create_post_dialog, null);
         mPostDisplay = (ImageView) mRootView.findViewById(R.id.post_dialog_display);
         mRootView.findViewById(R.id.Button_Share).setOnClickListener(this);
