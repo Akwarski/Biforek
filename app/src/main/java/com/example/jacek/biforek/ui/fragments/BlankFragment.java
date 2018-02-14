@@ -1,4 +1,4 @@
-package com.example.jacek.biforek.Fragment;
+package com.example.jacek.biforek.ui.fragments;
 
 
 import android.content.Intent;
@@ -11,16 +11,16 @@ import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-import com.bumptech.glide.Glide;
-import com.example.jacek.biforek.FirebaseUtils;
-import com.example.jacek.biforek.Constants;
-import com.example.jacek.biforek.Post;
-import com.example.jacek.biforek.PostCreateDialog;
+import com.example.jacek.biforek.models.Comment;
+import com.example.jacek.biforek.ui.activities.PostActivity;
+import com.example.jacek.biforek.utils.FirebaseUtils;
+import com.example.jacek.biforek.utils.Constants;
+import com.example.jacek.biforek.models.Post;
+import com.example.jacek.biforek.ui.dialogs.PostCreateDialog;
 import com.example.jacek.biforek.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DataSnapshot;
@@ -28,8 +28,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -79,6 +77,7 @@ public class BlankFragment extends Fragment {
             @Override
             protected void populateViewHolder(PostHolder viewHolder, final Post model, int position) {
                 viewHolder.setNumLikes(String.valueOf(model.getNumLikes()));
+                viewHolder.setNumCOmments(String.valueOf(model.getNumComments()));
                 viewHolder.setTIme(DateUtils.getRelativeTimeSpanString(model.getTimeCreated()));
                 viewHolder.setUName(model.getUName().getUName());
                 viewHolder.setUSurname(model.getUSurname().getUSurname());
@@ -176,6 +175,7 @@ public class BlankFragment extends Fragment {
         LinearLayout postLikeLayout;
         LinearLayout postCommentLayout;
         TextView postNumLikesTextView;
+        TextView postNumCommentsTextView;
 
 
         public PostHolder(View itemView) {
@@ -186,6 +186,7 @@ public class BlankFragment extends Fragment {
             postLikeLayout = (LinearLayout) itemView.findViewById(R.id.LIKE_Linear);
             postCommentLayout = (LinearLayout) itemView.findViewById(R.id.COMMENT_counter);
             postNumLikesTextView = (TextView) itemView.findViewById(R.id.LIKE_counter);
+            postNumCommentsTextView = (TextView) itemView.findViewById(R.id.COMMENT_counter);
             postAdditionTextView = (TextView) itemView.findViewById(R.id.POST);
             postWhereTextView = (TextView) itemView.findViewById(R.id.GdzieAdd);
             postWhenTextView = (TextView) itemView.findViewById(R.id.KiedyAdd);
@@ -208,6 +209,10 @@ public class BlankFragment extends Fragment {
 
         public void setNumLikes(String numLikes) {
             postNumLikesTextView.setText(numLikes);
+        }
+
+        public void setNumCOmments(String numComments) {
+            postNumCommentsTextView.setText(numComments);
         }
 
         public void setPostText(String Addition) {

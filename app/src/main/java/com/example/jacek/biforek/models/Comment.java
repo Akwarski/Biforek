@@ -1,4 +1,6 @@
-package com.example.jacek.biforek;
+package com.example.jacek.biforek.models;
+
+import com.example.jacek.biforek.models.User;
 
 import java.io.Serializable;
 

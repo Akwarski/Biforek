@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jacek.biforek.AddEventActivity">
+    tools:context="com.example.jacek.biforek.ui.activities.activity4_add.AddEventActivity">
 
     <ScrollView
         android:layout_width="match_parent"

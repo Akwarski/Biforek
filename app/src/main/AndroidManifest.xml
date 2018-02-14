@@ -15,18 +15,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.activities.activity1_log_OR_reg.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Register" />
-        <activity android:name=".ActionActivity" />
-        <activity android:name=".AddEventActivity" />
-        <activity android:name=".ShowEventsActivity" />
-        <activity android:name=".InfoActivity"></activity>
+        <activity android:name=".ui.activities.activity2_reg.Register" />
+        <activity android:name=".ui.activities.activity3_choose.ActionActivity" />
+        <activity android:name=".ui.activities.activity4_add.AddEventActivity" />
+        <activity android:name=".ui.activities.activity5_show.ShowEventsActivity" />
+        <activity android:name=".InfoActivity" />
+        <activity android:name=".ui.activities.PostActivity"></activity>
     </application>
 
 </manifest>

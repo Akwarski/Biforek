@@ -1,4 +1,4 @@
-package com.example.jacek.biforek;
+package com.example.jacek.biforek.ui.dialogs;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -7,14 +7,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
-import com.example.jacek.biforek.Post;
-import com.example.jacek.biforek.User;
-import com.example.jacek.biforek.Constants;
-import com.example.jacek.biforek.FirebaseUtils;
+
+import com.example.jacek.biforek.utils.Constants;
+import com.example.jacek.biforek.utils.FirebaseUtils;
+import com.example.jacek.biforek.R;
+import com.example.jacek.biforek.models.Post;
+import com.example.jacek.biforek.models.User;
 
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,6 +26,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.UploadTask;
 
+import static android.app.Activity.RESULT_OK;
+
 /**
  * Created by Jacek on 2018-02-07.
  */
@@ -34,7 +37,7 @@ public class PostCreateDialog extends DialogFragment implements View.OnClickList
     private Post mPost;
     private ProgressDialog mProgressDialog;
     private Uri mSelectedUri;
-    private ImageView mPostDisplay;
+    //private ImageView mPostDisplay;
     private View mRootView;
 
     @NonNull
@@ -54,10 +57,11 @@ public class PostCreateDialog extends DialogFragment implements View.OnClickList
         //https://github.com/brad007/PostAndCommentTutorial/tree/master/app/src/main/res/layout
         //https://github.com/brad007/PostAndCommentTutorial/tree/master/app/src/main/java/com/fire/fire/postandcommenttutorial
         //https://www.youtube.com/watch?v=AyJVK1Qay2E
+
         mRootView = getActivity().getLayoutInflater().inflate(R.layout.create_post_dialog, null);
-        mPostDisplay = (ImageView) mRootView.findViewById(R.id.post_dialog_display);
+        //mPostDisplay = (ImageView) mRootView.findViewById(R.id.post_dialog_display);
         mRootView.findViewById(R.id.Button_Share).setOnClickListener(this);
-        mRootView.findViewById(R.id.post_dialog_select_imageview).setOnClickListener(this);
+        //mRootView.findViewById(R.id.post_dialog_select_imageview).setOnClickListener(this);
         builder.setView(mRootView);
         return builder.create();
     }
@@ -65,12 +69,12 @@ public class PostCreateDialog extends DialogFragment implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.post_dialog_send_imageview:
+            case R.id.Button_Share:
                 sendPost();
                 break;
-            case R.id.post_dialog_select_imageview:
+            /*case R.id.post_dialog_select_imageview:
                 selectImage();
-                break;
+                break;*/
         }
     }
 
@@ -84,19 +88,21 @@ public class PostCreateDialog extends DialogFragment implements View.OnClickList
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        User user = dataSnapshot.getValue(User.class);
+                        User UName = dataSnapshot.getValue(User.class);
+                        User USurname = dataSnapshot.getValue(User.class);
                         final String postId = FirebaseUtils.getUid();
                         TextView postDialogTextView = (TextView) mRootView.findViewById(R.id.Addition);
                         String text = postDialogTextView.getText().toString();
 
-                        mPost.setUser(user);
+                        mPost.setUName(UName);
+                        mPost.setUSurname(USurname);
                         mPost.setNumComments(0);
                         mPost.setNumLikes(0);
                         mPost.setTimeCreated(System.currentTimeMillis());
                         mPost.setPostId(postId);
                         mPost.setPostText(text);
 
-                        if (mSelectedUri != null) {
+                        /*if (mSelectedUri != null) {
                             FirebaseUtils.getImageSRef()
                                     .child(mSelectedUri.getLastPathSegment())
                                     .putFile(mSelectedUri)
@@ -111,7 +117,9 @@ public class PostCreateDialog extends DialogFragment implements View.OnClickList
                                             });
                         } else {
                             addToMyPostList(postId);
-                        }
+                        }*/
+
+                        addToMyPostList(postId);
                     }
 
                     @Override
@@ -136,12 +144,12 @@ public class PostCreateDialog extends DialogFragment implements View.OnClickList
         FirebaseUtils.addToMyRecord(Constants.POST_KEY, postId);
     }
 
-    private void selectImage() {
+    /*private void selectImage() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/jpeg");
         intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
         startActivityForResult(Intent.createChooser(intent, "Complete action using"), RC_PHOTO_PICKER);
-    }
+    }*/
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -149,7 +157,7 @@ public class PostCreateDialog extends DialogFragment implements View.OnClickList
         if (requestCode == RC_PHOTO_PICKER) {
             if (resultCode == RESULT_OK) {
                 mSelectedUri = data.getData();
-                mPostDisplay.setImageURI(mSelectedUri);
+                //mPostDisplay.setImageURI(mSelectedUri);
             }
         }
     }

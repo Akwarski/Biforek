@@ -1,4 +1,6 @@
-package com.example.jacek.biforek;
+package com.example.jacek.biforek.models;
+
+import com.example.jacek.biforek.models.User;
 
 import java.io.Serializable;
 
@@ -11,12 +13,13 @@ public class Post implements Serializable {
     private String postText, Name, Surname, Where, When, Which, Alko, Club;
     private String postId;
     private long numLikes;
+    private long numComments;
     private long timeCreated;
 
     public Post() {
     }
 
-    public Post(User UName, User USurname, String postText, String Name, String Surname, String Where, String When, String Which, String Alko, String Club, String postId, long numLikes, long timeCreated) {
+    public Post(User UName, User USurname, String postText, String Name, String Surname, String Where, String When, String Which, String Alko, String Club, String postId, long numLikes, long numComments, long timeCreated) {
 
         this.UName = UName;
         this.USurname = USurname;
@@ -30,6 +33,7 @@ public class Post implements Serializable {
         this.Club = Club;
         this.postId = postId;
         this.numLikes = numLikes;
+        this.numComments = numComments;
         this.timeCreated = timeCreated;
     }
 
@@ -131,6 +135,14 @@ public class Post implements Serializable {
 
     public void setNumLikes(long numLikes) {
         this.numLikes = numLikes;
+    }
+
+    public long getNumComments() {
+        return numComments;
+    }
+
+    public void setNumComments(long numComments) {
+        this.numComments = numComments;
     }
 
     public long getTimeCreated() {

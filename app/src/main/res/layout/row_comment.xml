@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/USER_name_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/name"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:background="#e1e1e1"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#e1e1e1">
+
+        <TextView
+            android:id="@+id/USER_surname_comment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/surname"
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:text="@string/Time"
+            android:id="@+id/TIME_comment"
+            />
+
+    </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="dfsd; lfjsd;fk js;dkfj a;sdfj ;sadfj ;sadlkfj ;asdlkfj a;ldskfj ;alkdjfs ;alksdjf ;alkjdsf"
+            android:textColor="@android:color/black" />
+
+</LinearLayout>

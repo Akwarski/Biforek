@@ -1,7 +1,9 @@
-package com.example.jacek.biforek;
+package com.example.jacek.biforek.ui.activities.activity5_show;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.jacek.biforek.R;
 
 public class ShowEventsActivity extends AppCompatActivity {
 

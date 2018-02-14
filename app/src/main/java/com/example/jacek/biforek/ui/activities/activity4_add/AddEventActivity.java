@@ -1,4 +1,4 @@
-package com.example.jacek.biforek;
+package com.example.jacek.biforek.ui.activities.activity4_add;
 
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
+import com.example.jacek.biforek.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;

@@ -1,4 +1,4 @@
-package com.example.jacek.biforek;
+package com.example.jacek.biforek.utils;
 
 /**
  * Created by Jacek on 2018-01-07.
@@ -14,5 +14,5 @@ public class Constants {
     public static final String COMMENTS_KEY = "comments";
     public static final String USER_RECORD = "user_record";
     public static final String USERS_KEY = "users";
-    //public static final String NUM_COMMENTS_KEY = "numComments";
+    public static final String NUM_COMMENTS_KEY = "numComments";
 }

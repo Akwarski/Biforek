@@ -1,7 +1,10 @@
-package com.example.jacek.biforek;
+package com.example.jacek.biforek.ui.activities.activity2_reg;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import com.example.jacek.biforek.models.User;
+import com.example.jacek.biforek.utils.FirebaseUtils;
+import com.example.jacek.biforek.utils.BaseActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,14 +12,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.jacek.biforek.R;
+import com.example.jacek.biforek.ui.activities.activity1_log_OR_reg.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 
-import java.io.IOException;
-
-public class Register extends AppCompatActivity {
+public class Register extends BaseActivity { //tu było: extends AppCompatActivity
 
 //zmienna prywatna
     private Button register;
@@ -38,14 +43,36 @@ public class Register extends AppCompatActivity {
                 if(validate()){
 //Wprowadzamy na serwer // wybór za pomocą czego logowanie
                     //String user_Id = Id.getText().toString().trim();
-                    String user_email = Mail.getText().toString().trim();
+                    final String user_email = Mail.getText().toString().trim();
                     String user_password = Password.getText().toString().trim();
+                    final String n = Name.getText().toString();
+                    final String s = Surname.getText().toString();
+
 
                     firebaseAuth.createUserWithEmailAndPassword(user_email, user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(Register.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                                User user = new User();
+                                //String photoUrl = null;
+                                /*if (account.getPhotoUrl() != null) {
+                                    user.setPhotoUrl(account.getPhotoUrl().toString());
+                                }*/
+
+                                user.setEmail(user_email);
+                                user.setUName(n);
+                                user.setUSurname(s);
+                                user.setUid(mAuth.getCurrentUser().getUid());
+
+                                FirebaseUtils.getUserRef(user_email.replace(".", ","))
+                                        .setValue(user, new DatabaseReference.CompletionListener() {
+                                            @Override
+                                            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                                                mFirebaseUser = mAuth.getCurrentUser();
+                                                finish();
+                                            }
+                                        });
                                 startActivity(new Intent(Register.this, MainActivity.class));
                             }
                             else{

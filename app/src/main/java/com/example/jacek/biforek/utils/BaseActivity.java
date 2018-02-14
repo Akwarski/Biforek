@@ -1,4 +1,4 @@
-package com.example.jacek.biforek;
+package com.example.jacek.biforek.utils;
 
 /**
  * Created by Jacek on 2018-01-07.
@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.jacek.biforek.R;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
