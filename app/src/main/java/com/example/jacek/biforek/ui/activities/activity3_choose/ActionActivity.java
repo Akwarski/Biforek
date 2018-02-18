@@ -10,6 +10,7 @@ import com.example.jacek.biforek.ui.activities.activity4_add.AddEventActivity;
 import com.example.jacek.biforek.R;
 import com.example.jacek.biforek.ui.activities.activity5_show.ShowEventsActivity;
 import com.example.jacek.biforek.ui.dialogs.PostCreateDialog;
+import com.example.jacek.biforek.ui.fragments.BlankFragment;
 
 public class ActionActivity extends AppCompatActivity {
 
@@ -28,7 +29,7 @@ public class ActionActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActionActivity.this, PostCreateDialog.class);
+                Intent intent = new Intent(ActionActivity.this, BlankFragment.class);
                 startActivity(intent);
             }
         });
