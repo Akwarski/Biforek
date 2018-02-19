@@ -24,7 +24,7 @@
         </activity>
         <activity android:name=".ui.activities.activity2_reg.Register" />
         <activity android:name=".ui.activities.activity3_choose.ActionActivity" />
-        <activity android:name=".ui.activities.activity4_add.AddEventActivity" />
+        <activity android:name=".ui.activities.AddEventActivity" />
         <activity android:name=".ui.activities.activity5_show.ShowEventsActivity" />
         <activity android:name=".InfoActivity" />
         <activity android:name=".ui.activities.PostActivity"></activity>

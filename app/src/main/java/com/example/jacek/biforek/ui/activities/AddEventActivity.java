@@ -1,4 +1,4 @@
-package com.example.jacek.biforek.ui.activities.activity4_add;
+package com.example.jacek.biforek.ui.activities;
 
 import android.net.Uri;
 import android.support.annotation.NonNull;

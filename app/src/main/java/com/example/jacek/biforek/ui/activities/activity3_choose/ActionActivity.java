@@ -6,10 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.jacek.biforek.ui.activities.activity4_add.AddEventActivity;
 import com.example.jacek.biforek.R;
 import com.example.jacek.biforek.ui.activities.activity5_show.ShowEventsActivity;
-import com.example.jacek.biforek.ui.dialogs.PostCreateDialog;
 import com.example.jacek.biforek.ui.fragments.BlankFragment;
 
 public class ActionActivity extends AppCompatActivity {
