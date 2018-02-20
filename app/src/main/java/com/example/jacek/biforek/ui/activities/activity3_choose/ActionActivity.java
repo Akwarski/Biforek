@@ -8,7 +8,6 @@ import android.widget.Button;
 
 import com.example.jacek.biforek.R;
 import com.example.jacek.biforek.ui.activities.activity4_add.AddEventActivity;
-import com.example.jacek.biforek.ui.activities.activity5_show.Main2Activity_ALL;
 
 public class ActionActivity extends AppCompatActivity {
 
@@ -76,7 +75,7 @@ import android.widget.Button;
 
 import com.example.jacek.biforek.R;
 import com.example.jacek.biforek.ui.activities.activity4_add.AddEventActivity;
-import com.example.jacek.biforek.ui.activities.activity5_show.Main2Activity_ALL;
+import com.example.jacek.biforek.ui.activities.activity3_choose.Main2Activity_ALL;
 
 public class ActionActivity extends AppCompatActivity {
 

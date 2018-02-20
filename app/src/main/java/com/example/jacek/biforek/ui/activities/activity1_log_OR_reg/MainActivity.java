@@ -9,9 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.jacek.biforek.ui.activities.activity3_choose.ActionActivity;
 import com.example.jacek.biforek.R;
 import com.example.jacek.biforek.ui.activities.activity2_reg.Register;
+import com.example.jacek.biforek.ui.activities.activity3_choose.ActionActivity;
+import com.example.jacek.biforek.ui.activities.activity3_choose.Main2Activity_ALL;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(MainActivity.this, ActionActivity.class));
+                        startActivity(new Intent(MainActivity.this, Main2Activity_ALL.class));
                     } else {
                         Toast.makeText(MainActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
                     }

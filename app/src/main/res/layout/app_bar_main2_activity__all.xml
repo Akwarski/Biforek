@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jacek.biforek.ui.activities.activity5_show.Main2Activity_ALL">
+    android:fitsSystemWindows="true"
+    tools:context="com.example.jacek.biforek.ui.activities.activity3_choose.Main2Activity_ALL">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

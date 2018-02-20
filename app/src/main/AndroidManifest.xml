@@ -29,7 +29,7 @@
         <activity android:name=".InfoActivity" />
         <activity android:name=".ui.activities.PostActivity" />
         <activity
-            android:name=".ui.activities.activity5_show.Main2Activity_ALL"
+            android:name=".ui.activities.activity3_choose.Main2Activity_ALL"
             android:label="@string/title_activity_main2__all"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
