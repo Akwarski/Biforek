@@ -32,8 +32,17 @@
     <string name="Addition">Dodatkowe informacje:</string>
     <string name="Time">10h30</string>
 
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="web_client_id">WEB_CLIENT_ID</string>
+    <string name="web_client_id">911217611716-si41p2aj4q8f78o51e9p2soa2hg80np9.apps.googleusercontent.com</string>
+    <string name="title_activity_main2__all">Main2Activity_ALL</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="Signed_Out_Failed">Signed Out Failed</string>
+    <string name="Signed_Out">Signed Out</string>
 
 </resources>

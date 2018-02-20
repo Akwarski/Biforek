@@ -9,7 +9,7 @@ import java.io.Serializable;
  */
 
 public class Comment implements Serializable {
-    private User UName, USurname;
+    private User UName, USurname, user;
     private String commentId;
     private long timeCreated;
     private String comment;
@@ -17,14 +17,21 @@ public class Comment implements Serializable {
     public Comment() {
     }
 
-    public Comment(User UName, User USurname, String commentId, long timeCreated, String comment) {
+    public Comment(User user, String commentId, long timeCreated, String comment) {
 
         this.UName = UName;
         this.USurname = USurname;
+        this.user = user;
         this.commentId = commentId;
         this.timeCreated = timeCreated;
         this.comment = comment;
     }
+
+
+
+
+
+
 
     public User getUName() {
 
@@ -39,6 +46,26 @@ public class Comment implements Serializable {
 
         return USurname;
     }
+
+
+
+
+
+
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser(){
+        return user;
+    }
+
+
+
+
+
+
 
     public void setUSurname(User USurname) {
         this.USurname = USurname;

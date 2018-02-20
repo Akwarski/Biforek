@@ -1,4 +1,4 @@
-package com.example.jacek.biforek.ui.activities.activity5_show;
+package com.example.jacek.biforek.ui.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

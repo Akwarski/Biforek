@@ -7,10 +7,79 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.jacek.biforek.R;
-import com.example.jacek.biforek.ui.activities.activity5_show.ShowEventsActivity;
-import com.example.jacek.biforek.ui.fragments.BlankFragment;
+import com.example.jacek.biforek.ui.activities.activity4_add.AddEventActivity;
+import com.example.jacek.biforek.ui.activities.activity5_show.Main2Activity_ALL;
 
 public class ActionActivity extends AppCompatActivity {
+
+
+    //Zm viewHolder.setNumCOmments(String.valueOf(model.getNumComments()));ienne prywatne
+    private Button add, show;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_action);
+
+        add = (Button) findViewById(R.id.button1);
+        show = (Button) findViewById(R.id.button2);
+
+// Przejście do okna z dodawaniem eventów
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActionActivity.this, AddEventActivity.class);
+                startActivity(intent);
+            }
+        });
+
+// Przejście do okna z wyświetlaniem eventów
+        show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActionActivity.this, Main2Activity_ALL.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+
+
+
+
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Tutaj wybieramy dopiero że jednak chcemy dodać event
+
+    }
+}
+
+
+
+
+
+
+/*
+
+
+
+
+
+package com.example.jacek.biforek.ui.activities.activity3_choose;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import com.example.jacek.biforek.R;
+import com.example.jacek.biforek.ui.activities.activity4_add.AddEventActivity;
+import com.example.jacek.biforek.ui.activities.activity5_show.Main2Activity_ALL;
+
+public class ActionActivity extends AppCompatActivity {
+
 
 //Zm viewHolder.setNumCOmments(String.valueOf(model.getNumComments()));ienne prywatne
     private Button add, show;
@@ -27,7 +96,7 @@ public class ActionActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActionActivity.this, BlankFragment.class);
+                Intent intent = new Intent(ActionActivity.this, AddEventActivity.class);
                 startActivity(intent);
             }
         });
@@ -36,9 +105,27 @@ public class ActionActivity extends AppCompatActivity {
         show.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActionActivity.this, ShowEventsActivity.class);
+                Intent intent = new Intent(ActionActivity.this, Main2Activity_ALL.class);
                 startActivity(intent);
             }
         });
+
+
+
+
+
+
+
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Tutaj wybieramy dopiero że jednak chcemy dodać event
+
     }
 }
+
+
+
+
+
+
+ */

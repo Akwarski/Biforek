@@ -15,11 +15,19 @@
       },
       "oauth_client": [
         {
-          "client_id": "911217611716-g6s6k8pjeo2iujcfttsto9hv3gsgdlac.apps.googleusercontent.com",
+          "client_id": "911217611716-ku6gplv97oktsp41ksm8jdf9l9kdniar.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.jacek.biforek",
-            "certificate_hash": "64ec21b6f029ffd71637b87b7dc12ceffc5d3c6c"
+            "certificate_hash": "61936b6a0350eb91cbc7cf3ede906ec3304c591e"
+          }
+        },
+        {
+          "client_id": "911217611716-t7n6acu9jvdvnop8ot8mrj921j8gd78a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jacek.biforek",
+            "certificate_hash": "fac72b0c52ea45047ed69f9dc381f8c31b9a8af3"
           }
         },
         {

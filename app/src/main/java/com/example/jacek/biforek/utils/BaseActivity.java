@@ -1,14 +1,11 @@
 package com.example.jacek.biforek.utils;
 
-/**
- * Created by Jacek on 2018-01-07.
- */
-
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.example.jacek.biforek.R;
 import com.google.android.gms.auth.api.Auth;
@@ -16,6 +13,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.ResultCallbacks;
 import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,6 +36,9 @@ public class BaseActivity extends AppCompatActivity implements
             mFirebaseUser = mAuth.getCurrentUser();
         }
 
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Co zamiast tego GoogleSignInOptions:
+
         mGso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -57,12 +58,16 @@ public class BaseActivity extends AppCompatActivity implements
             mProgressDialog.setIndeterminate(true);
             mProgressDialog.setCancelable(false);
         }
-        mProgressDialog.show();
+        else {
+            if (!mProgressDialog.isShowing()) {
+                mProgressDialog.show();
+            }
+        }
     }
 
     protected void dismissProgressDialog() {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
-            mProgressDialog.dismiss();
+            mProgressDialog.hide(); //było mProgressDialog.dismiss();
         }
     }
 
@@ -71,10 +76,18 @@ public class BaseActivity extends AppCompatActivity implements
         mAuth.signOut();
 
         Auth.GoogleSignInApi.signOut(mGoogleApiClient)
-                .setResultCallback(new ResultCallback<Status>() {
-                    @Override
-                    public void onResult(@NonNull Status status) {
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                // Tu było ResultCallback<Status>()     bez "s" czyli tak jak napisałem
+                .setResultCallback(new ResultCallbacks<Status>() {
 
+                    @Override
+                    public void onSuccess(@NonNull Status status) {
+                        Toast.makeText(BaseActivity.this, getString(R.string.Signed_Out), Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull Status status) {
+                        Toast.makeText(BaseActivity.this, getString(R.string.Signed_Out_Failed), Toast.LENGTH_SHORT).show();
                     }
                 });
     }

@@ -9,7 +9,7 @@ import java.io.Serializable;
  */
 
 public class Post implements Serializable {
-    private User UName, USurname;
+    private User UName, USurname, user;
     private String postText, Name, Surname, Where, When, Which, Alko, Club;
     private String postId;
     private long numLikes;
@@ -36,6 +36,21 @@ public class Post implements Serializable {
         this.numComments = numComments;
         this.timeCreated = timeCreated;
     }
+
+
+
+
+
+    public User getUser() {
+
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
 
 
 

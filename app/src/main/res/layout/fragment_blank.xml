@@ -7,7 +7,9 @@
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recycler_post"/>
+        android:id="@+id/recyclerview_post"/>
+
+    <!--
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/FAB"
@@ -16,5 +18,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:src="@drawable/ic_action_name"/>
+
+    -->
 
 </FrameLayout>

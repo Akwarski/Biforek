@@ -138,16 +138,22 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
         progressDialog.show();
         mComment = new Comment();
         final String uid = FirebaseUtils.getUid();
-        String strComment = mCommentEditTextView.getText().toString();
+        final String strComment = mCommentEditTextView.getText().toString();
 
-        mComment.setCommentId(uid);
-        mComment.setComment(strComment);
         mComment.setTimeCreated(System.currentTimeMillis());
         FirebaseUtils.getUserRef(FirebaseUtils.getCurrentUser().getEmail().replace(".", ","))
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         User user = dataSnapshot.getValue(User.class);
+
+                        mComment.setUser(user);
+                        mComment.setCommentId(uid);
+                        mComment.setComment(strComment);
+                        mComment.setTimeCreated(System.currentTimeMillis());
+
+
+
                         FirebaseUtils.getCommentRef(mPost.getPostId())
                                 .child(uid)
                                 .setValue(mComment);

@@ -10,6 +10,7 @@ public class User implements Serializable {
     private String UName, USurname;
     private String email;
     private String uid;
+    private String temp;
 
     public User() {
     }
@@ -34,6 +35,17 @@ public class User implements Serializable {
     public String getUSurname() {
 
         return USurname;
+    }
+
+    public void setNameAndSurname(String UName, String USurname){
+        this.UName = UName;
+        this.USurname = USurname;
+    }
+
+    public String getNameAndSurname(){
+        this.temp = UName + " " + USurname;
+
+        return temp;
     }
 
     public void setUSurname(String USurname) {

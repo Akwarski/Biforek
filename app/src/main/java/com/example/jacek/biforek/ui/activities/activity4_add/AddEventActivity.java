@@ -1,44 +1,61 @@
-package com.example.jacek.biforek.ui.fragments;
-
+package com.example.jacek.biforek.ui.activities.activity4_add;
 
 import android.content.Intent;
-import android.os.Bundle;
+import android.net.Uri;
+import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.Fragment;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
-
-import com.example.jacek.biforek.ui.activities.activity4_add.AddEventActivity;
-import com.example.jacek.biforek.ui.activities.PostActivity;
-import com.example.jacek.biforek.utils.FirebaseUtils;
-import com.example.jacek.biforek.utils.Constants;
-import com.example.jacek.biforek.models.Post;
+import com.bumptech.glide.Glide;
 import com.example.jacek.biforek.R;
+import com.example.jacek.biforek.ui.activities.PostActivity;
+import com.example.jacek.biforek.ui.dialogs.PostCreateDialog;
+import com.example.jacek.biforek.models.Post;
+import com.example.jacek.biforek.utils.FirebaseUtils;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.example.jacek.biforek.utils.Constants;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class BlankFragment extends AddEventActivity {
-    private View mRootView;
-    private FirebaseRecyclerAdapter<Post, PostHolder> mPostAdapter;
-    private RecyclerView mPostRecyclerView;
+public class AddEventActivity extends Fragment {
 
 
-    public BlankFragment() {
-        // konstruktor domyślny
+//Zmienne prywatne
+    protected EditText where, when, which, alko, club, addition;
+    protected ProgressBar progressBar;
+    protected StorageReference storageReference;
+    protected Button ShareButton;
+
+    //DODANE
+    private View mRootVIew;
+    private FirebaseRecyclerAdapter<Post, PostHolder> mPostAdapter;//aby post był widoczny
+    private RecyclerView mPostRecyclerView;//aby post był widoczny
+
+    public AddEventActivity() {
+        // Required empty public constructor
     }
 
 
@@ -46,16 +63,15 @@ public class BlankFragment extends AddEventActivity {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        //mRootView = inflater.inflate(R.layout.fragment_blank, container, false);
+        mRootVIew = inflater.inflate(R.layout.fragment_blank, container, false);
 
-        mRootView = ret();
 
-        init();
+        //aby post był widoczny
+        //init();
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        /*  NOT NECESSARY HERE
-
-        FloatingActionButton fab = (FloatingActionButton) mRootView.findViewById(R.id.FAB);
-        fab.setOnClickListener(new View.OnClickListener() {
+        Button ShareButton = (Button) mRootVIew.findViewById(R.id.Button_Share);
+        ShareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 PostCreateDialog dialog = new PostCreateDialog();
@@ -63,33 +79,45 @@ public class BlankFragment extends AddEventActivity {
             }
         });
 
-        */
 
-        return mRootView;
+        return mRootVIew;
+    }
+
+    public View ret(){
+        return mRootVIew;
     }
 
     private void init() {
-        mPostRecyclerView = (RecyclerView) mRootView.findViewById(R.id.recyclerview_post);
+        mPostRecyclerView = (RecyclerView) mRootVIew.findViewById(R.id.recyclerview_post);
         mPostRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        //Dodaje aby post był widoczny
         FirebaseUtils.getPostRef();
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         setupAdapter();
         mPostRecyclerView.setAdapter(mPostAdapter);
     }
 
+    //aby post był widoczny
     private void setupAdapter() {
         mPostAdapter = new FirebaseRecyclerAdapter<Post, PostHolder>(
                 Post.class,
                 R.layout.row_post,
                 PostHolder.class,
+
+                //Dodaje aby post był widoczny
                 FirebaseUtils.getPostRef()
+                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ) {
             @Override
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //Połączone z PostHolder (na dole)
             protected void populateViewHolder(PostHolder viewHolder, final Post model, int position) {
-                viewHolder.setNumLikes(String.valueOf(model.getNumLikes()));
                 viewHolder.setNumCOmments(String.valueOf(model.getNumComments()));
+                viewHolder.setNumLikes(String.valueOf(model.getNumLikes()));  //Do wyświetlenia lików
                 viewHolder.setTIme(DateUtils.getRelativeTimeSpanString(model.getTimeCreated()));
+                viewHolder.setPostText(model.getPostText());
                 viewHolder.setUName(model.getUName().getUName());
                 viewHolder.setUSurname(model.getUSurname().getUSurname());
                 viewHolder.setPostText(model.getPostText());
@@ -99,6 +127,9 @@ public class BlankFragment extends AddEventActivity {
                 viewHolder.setAlkoText(model.getAlkoText());
                 viewHolder.setClubText(model.getClubText());
 
+
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                // Do aktualizacji ilości likeów
                 viewHolder.postLikeLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -114,18 +145,24 @@ public class BlankFragment extends AddEventActivity {
                         startActivity(intent);
                     }
                 });
-
             }
         };
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     //During the tutorial I think I messed up this code. Make sure your's aligns to this, or just
     //check out the github code
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //Do dodawania lub odejmowania likeów
     private void onLikeClick(final String postId) {
         FirebaseUtils.getPostLikedRef(postId)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        // Odejmowanie likeów
                         if (dataSnapshot.getValue() != null) {
                             //User liked
                             FirebaseUtils.getPostRef()
@@ -145,7 +182,11 @@ public class BlankFragment extends AddEventActivity {
                                                     .setValue(null);
                                         }
                                     });
-                        } else {
+                        }
+
+                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        //Z neta dodawanie lików
+                        else {
                             FirebaseUtils.getPostRef()
                                     .child(postId)
                                     .child(Constants.NUM_LIKES_KEY)
@@ -173,31 +214,41 @@ public class BlankFragment extends AddEventActivity {
                 });
     }
 
+    //aby post był widoczny
     public static class PostHolder extends RecyclerView.ViewHolder {
+        ImageView postOwnerDisplayImageView;
         TextView postOwnerUNameTextView;
         TextView postOwnerUSurnameTextView;
         TextView postTimeCreatedTextView;
+        ImageView postDisplayImageVIew; //Do wyświetlania Postów z likeami
+        TextView postTextTextView;
+        LinearLayout postLikeLayout;
+        LinearLayout postCommentLayout;
+        TextView postNumLikesTextView;  //Do zloczania lików
+        TextView postNumCommentsTextView;
         TextView postAdditionTextView;
         TextView postWhereTextView;
         TextView postWhenTextView;
         TextView postWhichTextView;
         TextView postAlkoTextView;
         TextView postClubTextView;
-        LinearLayout postLikeLayout;
-        LinearLayout postCommentLayout;
-        TextView postNumLikesTextView;
-        TextView postNumCommentsTextView;
+
+        //Dodaje like w celu działania:
+        //ImageView postLikeIV;
 
 
         public PostHolder(View itemView) {
             super(itemView);
+            //postOwnerDisplayImageView = (ImageView) itemView.findViewById(R.id.iv_post_owner_display); //Zdjęcie w kółeczku
             postOwnerUNameTextView = (TextView) itemView.findViewById(R.id.USER_name);
             postOwnerUSurnameTextView = (TextView) itemView.findViewById(R.id.USER_surname);
             postTimeCreatedTextView = (TextView) itemView.findViewById(R.id.TIME);
-            postLikeLayout = (LinearLayout) itemView.findViewById(R.id.LIKE_Linear);
+            //postDisplayImageVIew = (ImageView) itemView.findViewById(R.id.iv_post_display); //Do wyświetlania postów z likeami //aktualizacja ZDJĘCIE
+            postLikeLayout = (LinearLayout) itemView.findViewById(R.id.LIKE_Linear); // Do wyświetlenia likeów zamiast postLikeIV
             postCommentLayout = (LinearLayout) itemView.findViewById(R.id.COMMENT_counter);
-            postNumLikesTextView = (TextView) itemView.findViewById(R.id.LIKE_counter);
+            postNumLikesTextView = (TextView) itemView.findViewById(R.id.LIKE_counter); // Do zliczania lików
             postNumCommentsTextView = (TextView) itemView.findViewById(R.id.COMMENT_counter);
+            //postTextTextView = (TextView) itemView.findViewById(R.id.tv_post_text); // Tylko jeden tekst główny... OPIS
             postAdditionTextView = (TextView) itemView.findViewById(R.id.POST);
             postWhereTextView = (TextView) itemView.findViewById(R.id.GdzieAdd);
             postWhenTextView = (TextView) itemView.findViewById(R.id.KiedyAdd);
@@ -205,6 +256,10 @@ public class BlankFragment extends AddEventActivity {
             postAlkoTextView = (TextView) itemView.findViewById(R.id.ProwiantAdd);
             postClubTextView = (TextView) itemView.findViewById(R.id.PotemAdd);
         }
+
+            //Dodaje like w celu działania:
+            //postLikeIV = (ImageView) itemView.findViewById(R.id.iv_like);
+
 
         public void setUName(String UName) {
             postOwnerUNameTextView.setText(UName);
@@ -250,5 +305,76 @@ public class BlankFragment extends AddEventActivity {
             postClubTextView.setText(Club);
         }
 
+        //Dodaje do wyświetlenia postów:
+        //public void setPostImage(String url){
+
+        //}
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add_event);
+
+        where = (EditText) findViewById(R.id.Where);
+        when = (EditText) findViewById(R.id.When);
+        which = (EditText) findViewById(R.id.Which);
+        alko = (EditText) findViewById(R.id.Alko);
+        club = (EditText) findViewById(R.id.Club);
+        addition = (EditText) findViewById(R.id.Addition);
+
+        progressBar = (ProgressBar) findViewById(R.id.Progres);
+        storageReference = FirebaseStorage.getInstance().getReference();
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Dodaje
+        mRootVIew = inflater.inflate(R.layout.fragment_home, container, false);
+
+        ShareButton = (Button) mRootVIew.findViewById(R.id.Button_Share);
+        ShareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PostCreateDialog dialog = new PostCreateDialog();
+                dialog.show(getFragmentManager(), null);
+            }
+        });
+
+    }
+
+
+    //public void ShareButton(View view){
+    //    String Where = where.getText().toString().trim();
+    //    String When = when.getText().toString().trim();
+    //    String Which = which.getText().toString().trim();
+    //    String Alko = alko.getText().toString().trim();
+    //   String Club = club.getText().toString().trim();
+    //}
+
+
+    //wprowadzanie info na serwer
+
+    */
+
 }
