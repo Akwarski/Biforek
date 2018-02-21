@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.jacek.biforek.models.Post;
+import com.example.jacek.biforek.models.User;
 import com.example.jacek.biforek.ui.activities.PostActivity;
 import com.example.jacek.biforek.ui.fragments.BlankFragment;
 import com.example.jacek.biforek.utils.Constants;
@@ -39,6 +40,7 @@ public class ShowMyEventFragment extends Fragment {
 
     // DODAJE
     private View mRootVIew;
+    private User user;
     private FirebaseRecyclerAdapter<Post, PostHolder> mPostAdapter;//aby post był widoczny
     private RecyclerView mPostRecyclerView;//aby post był widoczny
 
@@ -49,12 +51,12 @@ public class ShowMyEventFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater2, ViewGroup container2,
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        mRootVIew = inflater2.inflate(R.layout.fragment_show_my_event, container2, false);
+        mRootVIew = inflater.inflate(R.layout.fragment_show_my_event, container, false);
 
-        init();
+        init();// Do wyświetlania postów w recycleView
 
         return  mRootVIew;
     }
@@ -67,7 +69,7 @@ public class ShowMyEventFragment extends Fragment {
         FirebaseUtils.getPostRef();
 
         setupAdapter();
-        mPostRecyclerView.setAdapter(mPostAdapter);
+        mPostRecyclerView.setAdapter(mPostAdapter); //WYŚWIETLANIE
     }
 
 
@@ -80,11 +82,10 @@ public class ShowMyEventFragment extends Fragment {
         ) {
             @Override
             protected void populateViewHolder(PostHolder viewHolder, final Post model, int position) {
-                //viewHolder.setNumLikes(String.valueOf(model.getNumLikes()));
-                //viewHolder.setNumCOmments(String.valueOf(model.getNumComments()));
-
-                viewHolder.setUName(model.getUName().getUName());
-                viewHolder.setUSurname(model.getUSurname().getUSurname());
+                viewHolder.setNumLikes(String.valueOf(model.getNumLikes()));
+                viewHolder.setNumCOmments(String.valueOf(model.getNumComments()));
+                viewHolder.setUName(model.getUName());
+                viewHolder.setUSurname(model.getUSurname());
                 viewHolder.setTIme(DateUtils.getRelativeTimeSpanString(model.getTimeCreated()));
                 viewHolder.setPostText(model.getPostText());
                 viewHolder.setWhereText(model.getWhereText());

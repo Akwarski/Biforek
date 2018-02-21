@@ -4,33 +4,16 @@ package com.example.jacek.biforek.ui.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 
-import com.example.jacek.biforek.InfoActivity;
-import com.example.jacek.biforek.ui.activities.PostActivity;
-import com.example.jacek.biforek.ui.activities.activity3_choose.Main2Activity_ALL;
 import com.example.jacek.biforek.ui.activities.activity5_show.Main3Activity_Disp;
-import com.example.jacek.biforek.ui.activities.activity5_show.Main3Activity_Display;
 import com.example.jacek.biforek.ui.dialogs.PostCreateDialog;
-import com.example.jacek.biforek.utils.FirebaseUtils;
-import com.example.jacek.biforek.utils.Constants;
-import com.example.jacek.biforek.models.Post;
 import com.example.jacek.biforek.R;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.MutableData;
-import com.google.firebase.database.Transaction;
-import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.

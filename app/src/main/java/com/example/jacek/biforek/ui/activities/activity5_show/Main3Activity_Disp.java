@@ -43,13 +43,13 @@ public class Main3Activity_Disp extends BaseActivity
         Toolbar toolbar = findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
 
-        //mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
         init();
-        //getSupportFragmentManager().beginTransaction().replace(R.id.container2, new ShowMyEventFragment()).commit();
-        if (savedInstanceState != null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container2, new ShowMyEventFragment()).commit();
-        }
+        getSupportFragmentManager().beginTransaction().replace(R.id.container2, new ShowMyEventFragment()).commit();
+        //if (savedInstanceState != null) {
+        //    getSupportFragmentManager().beginTransaction().replace(R.id.container2, new ShowMyEventFragment()).commit();
+        //}
 
 
 

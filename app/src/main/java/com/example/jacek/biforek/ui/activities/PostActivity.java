@@ -66,8 +66,8 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             protected void populateViewHolder(CommentHolder viewHolder, Comment model, int position) {
                 //viewHolder.setUsername(model.getUser().getUser());
-                viewHolder.setUserNAME(model.getUName().getUName());
-                viewHolder.setUserSURNAME(model.getUSurname().getUSurname());
+                viewHolder.setUserNAME(model.getUName());
+                viewHolder.setUserSURNAME(model.getUSurname());
                 viewHolder.setComment(model.getComment());
                 viewHolder.setTime(DateUtils.getRelativeTimeSpanString(model.getTimeCreated()));
 
@@ -82,21 +82,32 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initPost() {
-        //ImageView postOwnerDisplayImageView = (ImageView) findViewById(R.id.iv_post_owner_display);
-        TextView postOwnerUserNameTextView = (TextView) findViewById(R.id.USER_name);
-        TextView postOwnerUserSurnameTextView = (TextView) findViewById(R.id.USER_surname);
-        TextView postTimeCreatedTextView = (TextView) findViewById(R.id.TIME);
-        //ImageView postDisplayImageView = (ImageView) findViewById(R.id.iv_post_display);
-        LinearLayout postLikeLayout = (LinearLayout) findViewById(R.id.LIKE_Linear);
-        LinearLayout postCommentLayout = (LinearLayout) findViewById(R.id.COMMENT_Linear);
-        TextView postNumLikesTextView = (TextView) findViewById(R.id.LIKE_counter);
-        TextView postNumCommentsTextView = (TextView) findViewById(R.id.COMMENT_counter);
-        TextView postTextTextView = (TextView) findViewById(R.id.POST);
+        TextView postOwnerUserNameTextView = findViewById(R.id.USER_name);
+        TextView postOwnerUserSurnameTextView = findViewById(R.id.USER_surname);
+        TextView postTimeCreatedTextView = findViewById(R.id.TIME);
+        LinearLayout postLikeLayout = findViewById(R.id.LIKE_Linear);
+        LinearLayout postCommentLayout = findViewById(R.id.COMMENT_Linear);
+        TextView postNumLikesTextView = findViewById(R.id.LIKE_counter);
+        TextView postNumCommentsTextView =findViewById(R.id.COMMENT_counter);
 
-        postOwnerUserNameTextView.setText(mPost.getUName().getUName());
-        postOwnerUserSurnameTextView.setText(mPost.getUSurname().getUSurname());
+        TextView postTextTextView = findViewById(R.id.POST);
+        TextView where = findViewById(R.id.GdzieAdd);
+        TextView when = findViewById(R.id.KiedyAdd);
+        TextView which = findViewById(R.id.KtóraAdd);
+        TextView alko = findViewById(R.id.ProwiantAdd);
+        TextView club = findViewById(R.id.PotemAdd);
+
+        postOwnerUserNameTextView.setText(mPost.getUName());
+        postOwnerUserSurnameTextView.setText(mPost.getUSurname());
         postTimeCreatedTextView.setText(DateUtils.getRelativeTimeSpanString(mPost.getTimeCreated()));
+
         postTextTextView.setText(mPost.getPostText());
+        where.setText(mPost.getWhereText());
+        when.setText(mPost.getWhereText());
+        which.setText(mPost.getWhereText());
+        alko.setText(mPost.getWhereText());
+        club.setText(mPost.getWhereText());
+
         postNumLikesTextView.setText(String.valueOf(mPost.getNumLikes()));
         postNumCommentsTextView.setText(String.valueOf(mPost.getNumComments()));
 

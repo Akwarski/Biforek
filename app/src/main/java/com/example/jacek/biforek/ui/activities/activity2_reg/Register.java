@@ -30,7 +30,6 @@ public class Register extends BaseActivity { //tu było: extends AppCompatActivi
     private Button register;
     private EditText Name, Surname, Mail, Id, Password;
     private FirebaseAuth firebaseAuth;
-    private static final String TAG = Register.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +48,8 @@ public class Register extends BaseActivity { //tu było: extends AppCompatActivi
                     //String user_Id = Id.getText().toString().trim();
                     final String user_email = Mail.getText().toString().trim();
                     String user_password = Password.getText().toString().trim();
-                    final String n = Name.getText().toString();
-                    final String s = Surname.getText().toString();
+                    final String nn = Name.getText().toString().trim();
+                    final String ss = Surname.getText().toString().trim();
 
 
                     firebaseAuth.createUserWithEmailAndPassword(user_email, user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -65,8 +64,8 @@ public class Register extends BaseActivity { //tu było: extends AppCompatActivi
                                 }*/
 
                                 user.setEmail(user_email);
-                                user.setUName(n);
-                                user.setUSurname(s);
+                                user.setUName(nn);
+                                user.setUSurname(ss);
                                 user.setUid(mAuth.getCurrentUser().getUid());
 
                                 FirebaseUtils.getUserRef(user_email.replace(".", ","))

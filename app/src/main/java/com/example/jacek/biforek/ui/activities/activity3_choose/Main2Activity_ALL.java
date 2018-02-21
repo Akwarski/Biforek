@@ -95,7 +95,7 @@ public class Main2Activity_ALL extends BaseActivity
                     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                     // Coś z getUName trzeba zrobić bo na żółto
                     //users.setNameAndSurname(users.getUName(), users.getUSurname());
-                    mNameTextView.setText(users.getNameAndSurname());
+                    mNameTextView.setText(users.getUSurname());
                     mEmailTextView.setText(users.getEmail());
                 }
             }

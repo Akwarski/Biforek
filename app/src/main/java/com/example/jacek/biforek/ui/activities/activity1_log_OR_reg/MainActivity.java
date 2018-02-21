@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import com.example.jacek.biforek.R;
 import com.example.jacek.biforek.ui.activities.activity2_reg.Register;
-import com.example.jacek.biforek.ui.activities.activity3_choose.ActionActivity;
 import com.example.jacek.biforek.ui.activities.activity3_choose.Main2Activity_ALL;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

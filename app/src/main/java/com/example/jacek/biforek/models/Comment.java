@@ -9,15 +9,15 @@ import java.io.Serializable;
  */
 
 public class Comment implements Serializable {
-    private User UName, USurname, user;
-    private String commentId;
+    private User user;
+    private String commentId, USurname, UName;
     private long timeCreated;
     private String comment;
 
     public Comment() {
     }
 
-    public Comment(User UName, User USurname, String commentId, long timeCreated, String comment) {
+    public Comment(User user, String UName, String USurname, String commentId, long timeCreated, String comment) {
 
         this.UName = UName;
         this.USurname = USurname;
@@ -33,41 +33,33 @@ public class Comment implements Serializable {
 
 
 
-    public User getUName() {
+    public String getUName() {
 
         return UName;
     }
 
-    public void setUName(User UName) {
+    public void setUName(String UName) {
         this.UName = UName;
     }
 
-    public User getUSurname() {
+    public String getUSurname() {
 
         return USurname;
     }
 
 
-
-
-
-
+    public User getUser(){
+        return user;
+    }
 
     public void setUser(User user) {
         this.user = user;
     }
 
-    public User getUser(){
-        return user;
-    }
 
 
 
-
-
-
-
-    public void setUSurname(User USurname) {
+    public void setUSurname(String USurname) {
         this.USurname = USurname;
     }
 

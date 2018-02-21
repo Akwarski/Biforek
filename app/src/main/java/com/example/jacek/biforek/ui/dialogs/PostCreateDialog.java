@@ -79,6 +79,7 @@ public class PostCreateDialog extends DialogFragment implements View.OnClickList
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         User user = dataSnapshot.getValue(User.class);
                         final String postId = FirebaseUtils.getUid();
+
                         TextView postDialogTextView = mRootView.findViewById(R.id.Addition);
                         TextView postWhere = mRootView.findViewById(R.id.Where);
                         TextView postWhen = mRootView.findViewById(R.id.When);
@@ -93,9 +94,13 @@ public class PostCreateDialog extends DialogFragment implements View.OnClickList
                         String Alko = postAlko.getText().toString();
                         String Club = postClub.getText().toString();
 
+                        String NAME = null;
+                        NAME = mPost.getUName();
+
+                        String SURNNAME = null;
+                        SURNNAME = mPost.getUSurname();
+
                         mPost.setUser(user);
-                        //mPost.setUName();
-                        //mPost.setUSurname();
                         mPost.setNumComments(0);
                         mPost.setNumLikes(0);
                         mPost.setTimeCreated(System.currentTimeMillis());
@@ -106,6 +111,8 @@ public class PostCreateDialog extends DialogFragment implements View.OnClickList
                         mPost.setWhichText(Which);
                         mPost.setAlkoText(Alko);
                         mPost.setClubText(Club);
+                        mPost.setUName(NAME);
+                        mPost.setUSurname(SURNNAME);
 
                         /*if (mSelectedUri != null) {
                             FirebaseUtils.getImageSRef()
@@ -156,7 +163,7 @@ public class PostCreateDialog extends DialogFragment implements View.OnClickList
         startActivityForResult(Intent.createChooser(intent, "Complete action using"), RC_PHOTO_PICKER);
     }*/
 
-    /*
+/*
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -166,5 +173,6 @@ public class PostCreateDialog extends DialogFragment implements View.OnClickList
                 //mPostDisplay.setImageURI(mSelectedUri);
             }
         }
-    }*/
+    }
+    */
 }
