@@ -6,10 +6,8 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.jacek.biforek.R;
@@ -28,13 +26,10 @@ public class Main3Activity_Disp extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
-    private ImageView mDisplayImageView;
     private TextView mNameTextView;
     private TextView mEmailTextView;
     private ValueEventListener mUserValueEventListener;
     private DatabaseReference mUserRef;
-    private Fragment fm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +42,6 @@ public class Main3Activity_Disp extends BaseActivity
 
         init();
         getSupportFragmentManager().beginTransaction().replace(R.id.container2, new ShowMyEventFragment()).commit();
-        //if (savedInstanceState != null) {
-        //    getSupportFragmentManager().beginTransaction().replace(R.id.container2, new ShowMyEventFragment()).commit();
-        //}
 
 
 
@@ -77,7 +69,6 @@ public class Main3Activity_Disp extends BaseActivity
 
 
     private void initNavHeader(View view) {
-        //mDisplayImageView = (ImageView) view.findViewById(R.id.imageView_display);
         mNameTextView = view.findViewById(R.id.textview_name2);
         mEmailTextView = view.findViewById(R.id.textView_email2);
 
@@ -86,9 +77,6 @@ public class Main3Activity_Disp extends BaseActivity
             public void onDataChange(final DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getValue() != null) {
                     User users = dataSnapshot.getValue(User.class);
-                    //Glide.with(Main3Activity_Disp.this);
-                    /*        .load(users.getPhotoUrl())
-                            .into(mDisplayImageView);*/
 
                     mNameTextView.setText(users.getUName());
                     mEmailTextView.setText(users.getEmail());
@@ -101,6 +89,10 @@ public class Main3Activity_Disp extends BaseActivity
             }
         };
     }
+
+
+
+
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //NIEWAŻNE
@@ -140,6 +132,8 @@ public class Main3Activity_Disp extends BaseActivity
     }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Koniec nieważnych
+
+
 
 /*
     @Override

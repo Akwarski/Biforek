@@ -1,8 +1,6 @@
 package com.example.jacek.biforek.ui.activities.activity5_show.fragments;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,17 +9,13 @@ import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v7.widget.RecyclerView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.jacek.biforek.models.Post;
-import com.example.jacek.biforek.models.User;
 import com.example.jacek.biforek.ui.activities.PostActivity;
-import com.example.jacek.biforek.ui.fragments.BlankFragment;
 import com.example.jacek.biforek.utils.Constants;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.example.jacek.biforek.ui.dialogs.PostCreateDialog;
 
 
 import com.example.jacek.biforek.R;
@@ -40,7 +34,6 @@ public class ShowMyEventFragment extends Fragment {
 
     // DODAJE
     private View mRootVIew;
-    private User user;
     private FirebaseRecyclerAdapter<Post, PostHolder> mPostAdapter;//aby post był widoczny
     private RecyclerView mPostRecyclerView;//aby post był widoczny
 
@@ -114,8 +107,6 @@ public class ShowMyEventFragment extends Fragment {
         };
     }
 
-    //During the tutorial I think I messed up this code. Make sure your's aligns to this, or just
-    //check out the github code
     private void onLikeClick(final String postId) {
         FirebaseUtils.getPostLikedRef(postId)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -248,7 +239,28 @@ public class ShowMyEventFragment extends Fragment {
     }
 }
 
-    /*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

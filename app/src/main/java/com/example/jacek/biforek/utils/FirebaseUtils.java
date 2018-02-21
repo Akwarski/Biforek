@@ -6,7 +6,6 @@ import java.util.ArrayList;
  * Created by Jacek on 2018-01-07.
  */
 
-import com.example.jacek.biforek.utils.Constants;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

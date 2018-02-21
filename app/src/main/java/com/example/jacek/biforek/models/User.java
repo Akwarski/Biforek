@@ -27,11 +27,6 @@ public class User implements Serializable {
 
 
 
-
-
-
-
-
     public String getUser() {
 
         return user;
@@ -40,13 +35,6 @@ public class User implements Serializable {
     public void setUser(String user) {
         this.user = user;
     }
-
-
-
-
-
-
-
 
 
 
@@ -60,25 +48,19 @@ public class User implements Serializable {
         this.UName = UName;
     }
 
+
+
+
     public String getUSurname() {
 
         return USurname;
     }
 
-    public void setNameAndSurname(String UName, String USurname){
-        this.UName = UName;
-        this.USurname = USurname;
-    }
-
-    public String getNameAndSurname(){
-        this.temp = UName + " " + USurname;
-
-        return temp;
-    }
-
     public void setUSurname(String USurname) {
         this.USurname = USurname;
     }
+
+
 
 
     public String getEmail() {
@@ -88,6 +70,9 @@ public class User implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+
+
+
 
     public String getUid() {
         return uid;

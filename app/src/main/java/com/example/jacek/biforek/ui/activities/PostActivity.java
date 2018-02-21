@@ -9,11 +9,9 @@ import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.jacek.biforek.R;
 import com.example.jacek.biforek.models.Comment;
 import com.example.jacek.biforek.models.Post;
@@ -26,8 +24,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 public class PostActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -71,10 +67,6 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
                 viewHolder.setComment(model.getComment());
                 viewHolder.setTime(DateUtils.getRelativeTimeSpanString(model.getTimeCreated()));
 
-                /*Glide.with(PostActivity.this)
-                        .load(model.getUser().getPhotoUrl())
-                        .into(viewHolder.commentOwnerDisplay);
-                */
             }
         };
 
@@ -111,22 +103,6 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
         postNumLikesTextView.setText(String.valueOf(mPost.getNumLikes()));
         postNumCommentsTextView.setText(String.valueOf(mPost.getNumComments()));
 
-        /*Glide.with(PostActivity.this)
-                .load(mPost.getUser().getPhotoUrl())
-                .into(postOwnerDisplayImageView);
-
-        if (mPost.getPostImageUrl() != null) {
-            postDisplayImageView.setVisibility(View.VISIBLE);
-            StorageReference storageReference = FirebaseStorage.getInstance().getReference(mPost.getPostImageUrl());
-
-            Glide.with(PostActivity.this)
-                    .using(new FirebaseImageLoader())
-                    .load(storageReference)
-                    .into(postDisplayImageView);
-        } else {
-            postDisplayImageView.setImageBitmap(null);
-            postDisplayImageView.setVisibility(View.GONE);
-        }*/
     }
 
     private void init() {
@@ -199,7 +175,6 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
 
 
     public static class CommentHolder extends RecyclerView.ViewHolder {
-        //ImageView commentOwnerDisplay;
         TextView usernameTextView;
         TextView usersurnameTextView;
         TextView timeTextView;
@@ -207,7 +182,6 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
 
         public CommentHolder(View itemView) {
             super(itemView);
-            //commentOwnerDisplay = (ImageView) itemView.findViewById(R.id.iv_comment_owner_display);
             usernameTextView = (TextView) itemView.findViewById(R.id.USER_name_comment);
             usersurnameTextView = (TextView) itemView.findViewById(R.id.USER_surname_comment);
             timeTextView = (TextView) itemView.findViewById(R.id.TIME_comment);

@@ -1,59 +1,24 @@
 package com.example.jacek.biforek.ui.activities.activity4_add;
 
-import android.content.Intent;
-import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.jacek.biforek.R;
-import com.example.jacek.biforek.ui.activities.PostActivity;
 import com.example.jacek.biforek.ui.dialogs.PostCreateDialog;
-import com.example.jacek.biforek.models.Post;
-import com.example.jacek.biforek.utils.FirebaseUtils;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.MutableData;
-import com.google.firebase.database.Transaction;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.example.jacek.biforek.utils.Constants;
 
 public class AddEventActivity extends Fragment {
 
 
 //Zmienne prywatne
     protected EditText where, when, which, alko, club, addition;
-    protected ProgressBar progressBar;
-    protected StorageReference storageReference;
-    protected Button ShareButton;
 
     //DODANE
     private View mRootVIew;
-    //private FirebaseRecyclerAdapter<Post, PostHolder> mPostAdapter;//aby post był widoczny
-    //private RecyclerView mPostRecyclerView;//aby post był widoczny
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,10 +26,6 @@ public class AddEventActivity extends Fragment {
         // Inflate the layout for this fragment
         mRootVIew = inflater.inflate(R.layout.fragment_blank, container, false);
 
-
-        //aby post był widoczny
-        //init();
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         Button ShareButton = (Button) mRootVIew.findViewById(R.id.Button_Share);
         ShareButton.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +39,34 @@ public class AddEventActivity extends Fragment {
 
         return mRootVIew;
     }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
     private void init() {
@@ -371,5 +360,3 @@ public class AddEventActivity extends Fragment {
     //wprowadzanie info na serwer
 
     */
-
-}

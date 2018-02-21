@@ -14,21 +14,15 @@ import android.widget.TextView;
 import com.example.jacek.biforek.R;
 import com.example.jacek.biforek.ui.fragments.BlankFragment;
 import com.example.jacek.biforek.utils.BaseActivity;
-import com.example.jacek.biforek.utils.FirebaseUtils;
 import com.example.jacek.biforek.models.User;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 public class Main2Activity_ALL extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private DatabaseReference mUserRef;
     private ValueEventListener mUserValueEventListener;
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
-    //private ImageView mDisplayImageView;
     private TextView mNameTextView;
     private TextView mEmailTextView;
 
@@ -43,7 +37,6 @@ public class Main2Activity_ALL extends BaseActivity
         //TA AKTYWNOŚC JEST DO BLANKFRAGMENT MA WYŚWIETLAĆ WYBÓR MIĘDZY DODANIEM A WYŚWIETLENIEM EVENTÓW!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-        //init();
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new BlankFragment()).commit();
 
 
@@ -63,18 +56,10 @@ public class Main2Activity_ALL extends BaseActivity
         initNavHeader(navHeaderView);
     }
 
-    private void init() {
-        if (mFirebaseUser != null) {
-            mUserRef = FirebaseUtils.getUserRef(mFirebaseUser.getEmail().replace(".", ","));
-        }
-    }
-
-
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Funkcja do wyświetlania w panelu nav
     private void initNavHeader(View view) {
-        //mDisplayImageView = (ImageView) view.findViewById(R.id.imageView_display);  //Do wyświetlenia zdjęcia w kółeczku
         mNameTextView = view.findViewById(R.id.textview_name);
         mEmailTextView = view.findViewById(R.id.textView_email);
 
@@ -84,16 +69,7 @@ public class Main2Activity_ALL extends BaseActivity
                 if (dataSnapshot.getValue() != null) {
                     User users = dataSnapshot.getValue(User.class);
 
-                    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    //Do zdjęcia
-                    /*
-                    Glide.with(Main2Activity_ALL.this)
-                            .load(users.getPhotoUrl())
-                            .into(mDisplayImageView);
-                    */
-
-                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    // Coś z getUName trzeba zrobić bo na żółto
+                    //getUName bo na żółto
                     //users.setNameAndSurname(users.getUName(), users.getUSurname());
                     mNameTextView.setText(users.getUSurname());
                     mEmailTextView.setText(users.getEmail());
@@ -109,10 +85,6 @@ public class Main2Activity_ALL extends BaseActivity
 
 
      /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -139,7 +111,8 @@ public class Main2Activity_ALL extends BaseActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            signOut();
+            //signOut();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -169,12 +142,13 @@ public class Main2Activity_ALL extends BaseActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
     // DODAJE
-
-//To Wyświtla dane z serwera:
-
+    // To Wyświtla dane z serwera:
+/*
     @Override
     protected void onStart() {
         super.onStart();
@@ -194,7 +168,7 @@ public class Main2Activity_ALL extends BaseActivity
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+*/
 
 }
 

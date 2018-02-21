@@ -36,14 +36,6 @@ public class Post implements Serializable {
         this.timeCreated = timeCreated;
     }
 
-    /*
-//TUTAJ z konstruktora
-public Post(User user, String postText, String UName, String USurname, String Where, String When, String Which, String Alko, String Club, String postId, long numLikes, long numComments, long timeCreated) {
-
-
-
-*/
-
 
     public User getUser() {
 
@@ -57,7 +49,6 @@ public Post(User user, String postText, String UName, String USurname, String Wh
 
 
 
-
     public String getUName() {
 
         return UName;
@@ -67,6 +58,9 @@ public Post(User user, String postText, String UName, String USurname, String Wh
         this.UName = UName;
     }
 
+
+
+
     public String getUSurname() {
 
         return USurname;
@@ -75,10 +69,6 @@ public Post(User user, String postText, String UName, String USurname, String Wh
     public void setUSurname(String USurname) {
         this.USurname = USurname;
     }
-
-
-
-
 
 
 
@@ -93,6 +83,7 @@ public Post(User user, String postText, String UName, String USurname, String Wh
 
 
 
+
     public String getWhereText() {
         return Where;
     }
@@ -100,6 +91,8 @@ public Post(User user, String postText, String UName, String USurname, String Wh
     public void setWhereText(String Where) {
         this.Where = Where;
     }
+
+
 
 
     public String getWhenText() {
@@ -111,6 +104,8 @@ public Post(User user, String postText, String UName, String USurname, String Wh
     }
 
 
+
+
     public String getWhichText() {
         return Which;
     }
@@ -118,6 +113,8 @@ public Post(User user, String postText, String UName, String USurname, String Wh
     public void setWhichText(String Which) {
         this.Which = Which;
     }
+
+
 
 
     public String getAlkoText() {
@@ -129,6 +126,8 @@ public Post(User user, String postText, String UName, String USurname, String Wh
     }
 
 
+
+
     public String getClubText() {
         return Club;
     }
@@ -136,6 +135,8 @@ public Post(User user, String postText, String UName, String USurname, String Wh
     public void setClubText(String Club) {
         this.Club = Club;
     }
+
+
 
 
     public String getPostId() {
@@ -147,6 +148,8 @@ public Post(User user, String postText, String UName, String USurname, String Wh
     }
 
 
+
+
     public long getNumLikes() {
         return numLikes;
     }
@@ -156,6 +159,8 @@ public Post(User user, String postText, String UName, String USurname, String Wh
     }
 
 
+
+
     public long getNumComments() {
         return numComments;
     }
@@ -163,6 +168,8 @@ public Post(User user, String postText, String UName, String USurname, String Wh
     public void setNumComments(long numComments) {
         this.numComments = numComments;
     }
+
+    
 
 
     public long getTimeCreated() {

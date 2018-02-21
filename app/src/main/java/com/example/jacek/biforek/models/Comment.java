@@ -31,8 +31,6 @@ public class Comment implements Serializable {
 
 
 
-
-
     public String getUName() {
 
         return UName;
@@ -42,10 +40,19 @@ public class Comment implements Serializable {
         this.UName = UName;
     }
 
+
+
+
     public String getUSurname() {
 
         return USurname;
     }
+
+    public void setUSurname(String USurname) {
+        this.USurname = USurname;
+    }
+
+
 
 
     public User getUser(){
@@ -59,9 +66,6 @@ public class Comment implements Serializable {
 
 
 
-    public void setUSurname(String USurname) {
-        this.USurname = USurname;
-    }
 
     public String getCommentId() {
         return commentId;
@@ -71,6 +75,9 @@ public class Comment implements Serializable {
         this.commentId = commentId;
     }
 
+
+
+
     public long getTimeCreated() {
         return timeCreated;
     }
@@ -78,6 +85,9 @@ public class Comment implements Serializable {
     public void setTimeCreated(long timeCreated) {
         this.timeCreated = timeCreated;
     }
+
+
+
 
     public String getComment() {
         return comment;

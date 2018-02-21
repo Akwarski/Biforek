@@ -36,11 +36,6 @@ public class MainActivity extends AppCompatActivity {
         register = (Button) findViewById(R.id.Button_Register_Now);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        //FirebaseUser user = firebaseAuth.getCurrentUser();
-        /*if (user != null) {
-            finish();
-            startActivity(new Intent(MainActivity.this, ActionActivity.class));
-        }*/
 
 //Przycisk "Register Now" do przejścia do innej aktywności
         register.setOnClickListener(new View.OnClickListener() {
