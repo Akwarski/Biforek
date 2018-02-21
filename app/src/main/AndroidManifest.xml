@@ -25,13 +25,17 @@
         <activity android:name=".ui.activities.activity2_reg.Register" />
         <activity android:name=".ui.activities.activity3_choose.ActionActivity" />
         <activity android:name=".ui.activities.activity4_add.AddEventActivity" />
-        <activity android:name=".ui.activities.ShowEventsActivity" />
         <activity android:name=".InfoActivity" />
         <activity android:name=".ui.activities.PostActivity" />
         <activity
             android:name=".ui.activities.activity3_choose.Main2Activity_ALL"
             android:label="@string/title_activity_main2__all"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.activities.activity5_show.Main3Activity_Display" />
+        <activity
+            android:name=".ui.activities.activity5_show.Main3Activity_Disp"
+            android:label="@string/title_activity_main3__disp"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

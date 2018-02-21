@@ -1,4 +1,4 @@
-package com.example.jacek.biforek.ui.activities.activity5_show;
+package com.example.jacek.biforek.ui.activities.activity5_show.fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -35,30 +35,10 @@ import com.google.firebase.database.ValueEventListener;
 
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link //ShowMyEventFragment.//OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link ShowMyEventFragment#//newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ShowMyEventFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    //private static final String ARG_PARAM1 = "param1";
-    //private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    //private String mParam1;
-    //private String mParam2;
-
-    //private OnFragmentInteractionListener mListener;
-
-
 
     // DODAJE
-    private View ListView;
+    private View mRootVIew;
     private FirebaseRecyclerAdapter<Post, PostHolder> mPostAdapter;//aby post był widoczny
     private RecyclerView mPostRecyclerView;//aby post był widoczny
 
@@ -67,62 +47,24 @@ public class ShowMyEventFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     //* @param param1 Parameter 1.
-     //* @param param2 Parameter 2.
-     * @return A new instance of fragment ShowMyEventFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    /*public static ShowMyEventFragment newInstance(String param1, String param2) {
-        ShowMyEventFragment fragment = new ShowMyEventFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }*/
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater2, ViewGroup container2,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_show_my_event, container, false);
 
-        //ListView = inflater.inflate(R.layout.fragment_show_my_event, container, false);
+        mRootVIew = inflater2.inflate(R.layout.fragment_show_my_event, container2, false);
 
-        //init();
+        init();
 
-        return  ListView;
+        return  mRootVIew;
     }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    /*
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }*/
 
 
     private void init() {
-        mPostRecyclerView = (RecyclerView) ListView.findViewById(R.id.recycler_post);
+        mPostRecyclerView = mRootVIew.findViewById(R.id.recycler_post2);
         mPostRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        //Dodaje aby post był widoczny
         FirebaseUtils.getPostRef();
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         setupAdapter();
         mPostRecyclerView.setAdapter(mPostAdapter);
@@ -130,19 +72,20 @@ public class ShowMyEventFragment extends Fragment {
 
 
     private void setupAdapter() {
-        mPostAdapter = new FirebaseRecyclerAdapter<Post, ShowMyEventFragment.PostHolder>(
+        mPostAdapter = new FirebaseRecyclerAdapter<Post, PostHolder>(
                 Post.class,
                 R.layout.row_post,
-                ShowMyEventFragment.PostHolder.class,
+                PostHolder.class,
                 FirebaseUtils.getPostRef()
         ) {
             @Override
-            protected void populateViewHolder(ShowMyEventFragment.PostHolder viewHolder, final Post model, int position) {
-                viewHolder.setNumLikes(String.valueOf(model.getNumLikes()));
-                viewHolder.setNumCOmments(String.valueOf(model.getNumComments()));
-                viewHolder.setTIme(DateUtils.getRelativeTimeSpanString(model.getTimeCreated()));
+            protected void populateViewHolder(PostHolder viewHolder, final Post model, int position) {
+                //viewHolder.setNumLikes(String.valueOf(model.getNumLikes()));
+                //viewHolder.setNumCOmments(String.valueOf(model.getNumComments()));
+
                 viewHolder.setUName(model.getUName().getUName());
                 viewHolder.setUSurname(model.getUSurname().getUSurname());
+                viewHolder.setTIme(DateUtils.getRelativeTimeSpanString(model.getTimeCreated()));
                 viewHolder.setPostText(model.getPostText());
                 viewHolder.setWhereText(model.getWhereText());
                 viewHolder.setWhenText(model.getWhenText());
@@ -176,7 +119,7 @@ public class ShowMyEventFragment extends Fragment {
         FirebaseUtils.getPostLikedRef(postId)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
+                    public void onDataChange(final DataSnapshot dataSnapshot) {
                         if (dataSnapshot.getValue() != null) {
                             //User liked
                             FirebaseUtils.getPostRef()

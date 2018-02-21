@@ -3,7 +3,6 @@ package com.example.jacek.biforek.ui.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,10 +15,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-import com.example.jacek.biforek.ui.activities.ShowEventsActivity;
-import com.example.jacek.biforek.ui.activities.activity4_add.AddEventActivity;
+import com.example.jacek.biforek.InfoActivity;
 import com.example.jacek.biforek.ui.activities.PostActivity;
-import com.example.jacek.biforek.ui.activities.activity5_show.ShowMyEventFragment;
+import com.example.jacek.biforek.ui.activities.activity3_choose.Main2Activity_ALL;
+import com.example.jacek.biforek.ui.activities.activity5_show.Main3Activity_Disp;
+import com.example.jacek.biforek.ui.activities.activity5_show.Main3Activity_Display;
 import com.example.jacek.biforek.ui.dialogs.PostCreateDialog;
 import com.example.jacek.biforek.utils.FirebaseUtils;
 import com.example.jacek.biforek.utils.Constants;
@@ -38,7 +38,7 @@ import com.google.firebase.database.ValueEventListener;
 public class BlankFragment extends Fragment {
     private View mRootView;
     private Button button, button0;
-    private FirebaseRecyclerAdapter<Post, PostHolder> mPostAdapter;
+    //private FirebaseRecyclerAdapter<Post, PostHolder> mPostAdapter;
     private RecyclerView mPostRecyclerView;
 
 
@@ -66,13 +66,13 @@ public class BlankFragment extends Fragment {
 
 
 
-        button = (Button) mRootView.findViewById(R.id.button2);
+        button = mRootView.findViewById(R.id.button2);
         button0 = mRootView.findViewById(R.id.button1);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ShowMyEventFragment.class);
+                Intent intent = new Intent(getActivity(), Main3Activity_Disp.class);
                 startActivity(intent);
             }
         });
@@ -90,7 +90,7 @@ public class BlankFragment extends Fragment {
 
         return mRootView;
     }
-
+/*
     private void init() {
         mPostRecyclerView = (RecyclerView) mRootView.findViewById(R.id.recycler_post);
         mPostRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -274,6 +274,7 @@ public class BlankFragment extends Fragment {
         }
 
     }
+    */
 }
 
 

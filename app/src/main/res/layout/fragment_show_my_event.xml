@@ -2,11 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jacek.biforek.ui.activities.activity5_show.ShowMyEventFragment">
-
+    tools:context="com.example.jacek.biforek.ui.activities.activity5_show.fragments.ShowMyEventFragment">
+<!--
+post_rv
+-->
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recycler_post"/>
+        android:id="@+id/recycler_post2"/>
 
 </FrameLayout>

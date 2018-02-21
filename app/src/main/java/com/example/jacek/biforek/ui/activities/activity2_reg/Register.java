@@ -14,10 +14,13 @@ import android.widget.Toast;
 
 import com.example.jacek.biforek.R;
 import com.example.jacek.biforek.ui.activities.activity1_log_OR_reg.MainActivity;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 
@@ -27,6 +30,7 @@ public class Register extends BaseActivity { //tu było: extends AppCompatActivi
     private Button register;
     private EditText Name, Surname, Mail, Id, Password;
     private FirebaseAuth firebaseAuth;
+    private static final String TAG = Register.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -51,12 +51,8 @@ public class AddEventActivity extends Fragment {
 
     //DODANE
     private View mRootVIew;
-    private FirebaseRecyclerAdapter<Post, PostHolder> mPostAdapter;//aby post był widoczny
-    private RecyclerView mPostRecyclerView;//aby post był widoczny
-
-    public AddEventActivity() {
-        // Required empty public constructor
-    }
+    //private FirebaseRecyclerAdapter<Post, PostHolder> mPostAdapter;//aby post był widoczny
+    //private RecyclerView mPostRecyclerView;//aby post był widoczny
 
 
     @Override
@@ -83,10 +79,7 @@ public class AddEventActivity extends Fragment {
         return mRootVIew;
     }
 
-    public View ret(){
-        return mRootVIew;
-    }
-
+/*
     private void init() {
         mPostRecyclerView = (RecyclerView) mRootVIew.findViewById(R.id.recycler_post);
         mPostRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -148,6 +141,8 @@ public class AddEventActivity extends Fragment {
             }
         };
     }
+
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -315,7 +310,7 @@ public class AddEventActivity extends Fragment {
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+*/
 
 
 

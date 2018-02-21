@@ -19,10 +19,11 @@ public class Post implements Serializable {
     public Post() {
     }
 
-    public Post(User UName, User USurname, String postText, String Name, String Surname, String Where, String When, String Which, String Alko, String Club, String postId, long numLikes, long numComments, long timeCreated) {
+    public Post(User user, String postText, String Name, String Surname, String Where, String When, String Which, String Alko, String Club, String postId, long numLikes, long numComments, long timeCreated) {
 
         this.UName = UName;
         this.USurname = USurname;
+        this.user = user;
         this.postText = postText;
         this.Name = Name;
         this.Surname = Surname;

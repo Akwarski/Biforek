@@ -1,26 +1,17 @@
 package com.example.jacek.biforek.ui.activities.activity3_choose;
 
-import android.app.FragmentManager;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
-import android.support.annotation.NonNull; // dodałem
-import android.content.Intent; // dodałem
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
 import android.widget.TextView;
-import com.bumptech.glide.Glide; // dodałem
 
 import com.example.jacek.biforek.R;
-import com.example.jacek.biforek.ui.activities.activity5_show.ShowMyEventFragment;
 import com.example.jacek.biforek.ui.fragments.BlankFragment;
 import com.example.jacek.biforek.utils.BaseActivity;
 import com.example.jacek.biforek.utils.FirebaseUtils;
@@ -49,9 +40,10 @@ public class Main2Activity_ALL extends BaseActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //TA AKTYWNOŚC JEST DO BLANKFRAGMENT MA WYŚWIETLAĆ WYBÓR MIĘDZY DODANIEM A WYŚWIETLENIEM EVENTÓW!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-        init();
+        //init();
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new BlankFragment()).commit();
 
 
@@ -181,6 +173,7 @@ public class Main2Activity_ALL extends BaseActivity
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // DODAJE
 
+//To Wyświtla dane z serwera:
 
     @Override
     protected void onStart() {

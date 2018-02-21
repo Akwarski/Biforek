@@ -17,7 +17,7 @@ public class Comment implements Serializable {
     public Comment() {
     }
 
-    public Comment(User user, String commentId, long timeCreated, String comment) {
+    public Comment(User UName, User USurname, String commentId, long timeCreated, String comment) {
 
         this.UName = UName;
         this.USurname = USurname;

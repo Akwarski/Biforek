@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 
 public class User implements Serializable {
-    private String UName, USurname;
+    private String UName, USurname, user;
     private String email;
     private String uid;
     private String temp;
@@ -15,13 +15,41 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String UName, String USurname, String email, String uid) {
+    public User(String user, String email, String uid) {
 
         this.UName = UName;
         this.USurname = USurname;
+        this.user = user;
         this.email = email;
         this.uid = uid;
     }
+
+
+
+
+
+
+
+
+
+    public String getUser() {
+
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+
+
+
+
+
+
+
+
+
 
     public String getUName() {
 

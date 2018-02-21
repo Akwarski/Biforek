@@ -54,7 +54,7 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initCommentSection() {
-        RecyclerView commentRecyclerView = (RecyclerView) findViewById(R.id.comment_recyclerview);
+        RecyclerView commentRecyclerView = findViewById(R.id.comment_recyclerview);
         commentRecyclerView.setLayoutManager(new LinearLayoutManager(PostActivity.this));
 
         FirebaseRecyclerAdapter<Comment, CommentHolder> commentAdapter = new FirebaseRecyclerAdapter<Comment, CommentHolder>(
@@ -65,6 +65,7 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
         ) {
             @Override
             protected void populateViewHolder(CommentHolder viewHolder, Comment model, int position) {
+                //viewHolder.setUsername(model.getUser().getUser());
                 viewHolder.setUserNAME(model.getUName().getUName());
                 viewHolder.setUserSURNAME(model.getUSurname().getUSurname());
                 viewHolder.setComment(model.getComment());
@@ -118,7 +119,7 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void init() {
-        mCommentEditTextView = (EditText) findViewById(R.id.add_comment); // activity_post dodawanie komentarza
+        mCommentEditTextView = findViewById(R.id.add_comment); // activity_post dodawanie komentarza
         findViewById(R.id.comment_send).setOnClickListener(this);         // activity_post wysłanie komentarza
     }
 
@@ -140,6 +141,8 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
         final String uid = FirebaseUtils.getUid();
         final String strComment = mCommentEditTextView.getText().toString();
 
+        mComment.setCommentId(uid);
+        mComment.setComment(strComment);
         mComment.setTimeCreated(System.currentTimeMillis());
         FirebaseUtils.getUserRef(FirebaseUtils.getCurrentUser().getEmail().replace(".", ","))
                 .addListenerForSingleValueEvent(new ValueEventListener() {
